@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<td>
-					<form action="/phonebook3/pb/updateForm" method="get">
+					<form action="${pageContext.request.contextPath}/pb/updateForm" method="get">
 						<input type="hidden" name="personId" value="${personInfo.personId}"> <!-- 필드의 변수명과 같아야 함 -->
 						<!--해당 정보만 수정할 수 있도록 personId를 hidden 타입으로 전달-->
 						<!-- personId가 전송되지 않는 에러 발생, 확인용 출력 -> 해결  -->
@@ -35,7 +35,7 @@
 					</form>
 				</td>
 				<td>
-					<form action="/phonebook3/pb/delete" method="get">
+					<form action="${pageContext.request.contextPath}/pb/delete" method="get">
 						<input type="hidden" name="personId" value="${personInfo.personId}">
 						<!--해당 정보만 삭제할 수 있도록 personId를 hidden 타입으로 전달-->
 						<button type="submit">삭제</button>
@@ -46,6 +46,6 @@
 	</table>
 	<br>
 	</c:forEach>
-	<a href="/phonebook3/pb/writeForm">[추가번호 등록]</a>
+	<a href="${pageContext.request.contextPath}/pb/writeForm">[추가번호 등록]</a>
 </body>
 </html>
