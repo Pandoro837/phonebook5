@@ -36,7 +36,7 @@ public class PhoneController {
 		// model에 담기
 		model.addAttribute("personList", personList);
 
-		String path = "/WEB-INF/views/list.jsp";
+		String path = "list";
 		return path;
 	}
 
@@ -46,7 +46,7 @@ public class PhoneController {
 
 		System.out.println(this.test + "writeForm");
 
-		String path = "/WEB-INF/views/writeForm.jsp";
+		String path = "writeForm";
 		return path;
 	}
 	// 쓰기폼
@@ -56,7 +56,7 @@ public class PhoneController {
 		
 		System.out.println(this.test + "writeForm");
 		
-		String path = "/WEB-INF/views/writeForm2.jsp";
+		String path = "writeForm2";
 		return path;
 	}
 
@@ -117,7 +117,7 @@ public class PhoneController {
 		
 		model.addAttribute("personInfo", personInfo);
 
-		String path = "/WEB-INF/views/updateForm.jsp";
+		String path = "updateForm";
 		return path;
 	}
 	
@@ -130,7 +130,7 @@ public class PhoneController {
 		
 		model.addAttribute("personInfo", personInfo);
 		
-		String path = "/WEB-INF/views/updateForm2.jsp";
+		String path = "updateForm2";
 		return path;
 	}
 	
