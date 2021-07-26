@@ -1,5 +1,8 @@
 package com.javaex.vo;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("PersonVo")
 public class PersonVo {
 	//필드
 	private int personId;

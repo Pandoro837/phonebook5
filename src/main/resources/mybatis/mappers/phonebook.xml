@@ -3,7 +3,7 @@
 <mapper namespace="phonebook">	<!-- 구분자, 각 쿼리문(mapper)의 제목을 구분 -->
 
 	<!-- resultMap -->
-	<resultMap id="resultMapPersonVo" type="com.javaex.vo.PersonVo" >
+	<resultMap id="resultMapPersonVo" type="PersonVo" >
 		<result column="person_id" property="personId" />
 		<result column="name" property="name" />
 		<result column="hp" property="hp" />
@@ -23,7 +23,7 @@
 	</select>
 	
 	<!-- personInsert -->
-	<insert id="personInsert" parameterType="com.javaex.vo.PersonVo">
+	<insert id="personInsert" parameterType="PersonVo">
 		<![CDATA[
 			insert INTO person
 			values(
@@ -34,5 +34,74 @@
 			)
 		]]>
 	</insert>
+
+	<!-- personInsert - Map을 이용한 방법-->
+	<insert id="personInsert2" parameterType="map">
+		<![CDATA[
+			insert INTO person
+			values(
+				seq_person_id.NEXTVAL,
+				#{name},
+				#{hp},
+				#{company}
+			)
+		]]>
+	</insert>
+	
+	<!-- personDelete -->
+	<delete id="personDelete" parameterType ="int">	<!-- 파라미터 타입이 기본 자료형일 경우, 기본 자료형을 적어주면 된다 -->
+		<![CDATA[
+			delete from person
+			where person_id = #{personId}
+		]]>
+	</delete>
+	
+	<!-- personUpdate -->
+	<update id="personUpdate" parameterType="PersonVo" >
+		<![CDATA[
+			UPDATE person
+			SET
+				name = #{name},
+				hp = #{hp},
+				company = #{company}
+			WHERE person_id = #{personId} 
+		]]>
+	</update>
+	
+	<!-- personUpdate - map 이용 -->
+	<update id="personUpdate2" parameterType="map" >
+		<![CDATA[
+			UPDATE person
+			SET
+				name = #{name},
+				hp = #{hp},
+				company = #{company}
+			WHERE person_id = #{personId} 
+		]]>
+	</update>
+	
+	<!-- getPerson -->
+	<select id="getPerson" parameterType="int" resultMap="resultMapPersonVo">
+		<![CDATA[
+				select 	person_id,
+						name,
+						hp,
+						company
+				from person
+				where person_id = #{personId}
+		]]>
+	</select>
+	
+	<!-- getPerson - map 이용 -->
+	<select id="getPerson2" parameterType="int" resultType="map">
+		<![CDATA[
+				select 	person_id,
+						name,
+						hp,
+						company
+				from person
+				where person_id = #{personId}
+		]]>
+	</select>
 	
 </mapper>
